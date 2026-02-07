@@ -4,6 +4,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { validateEmail } from "@/lib/utils";
 import emailjs from '@emailjs/browser';
+import resumePdf from "@assets/Resume (Abhishek Verma).pdf";
 
 interface ContactFormData {
   name: string;
@@ -388,7 +389,7 @@ const ContactSection = () => {
                 View Projects
               </a>
               <a
-                href="/attached_assets/Resume (Abhishek Verma)-Mp-LsHji.pdf" 
+                href={resumePdf}
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-5 py-2.5 bg-primary/10 text-primary rounded-md font-medium hover:bg-primary/20 transition-colors"
