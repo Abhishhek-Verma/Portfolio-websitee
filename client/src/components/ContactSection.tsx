@@ -387,8 +387,8 @@ const ContactSection = () => {
               >
                 View Projects
               </a>
-              <a 
-                href="/attached_assets/Resume (Abhishek Verma).pdf" 
+              <a
+                href="/attached_assets/Resume (Abhishek Verma)-Mp-LsHji.pdf" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-5 py-2.5 bg-primary/10 text-primary rounded-md font-medium hover:bg-primary/20 transition-colors"
