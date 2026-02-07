@@ -224,7 +224,7 @@ const ExperienceSection = () => {
               <h4 className="text-lg font-bold text-gray-800 mb-3">Want to know more?</h4>
               <p className="text-gray-600 mb-4">Download my complete resume to learn more about my skills and experiences.</p>
               <a 
-                href="/assets/Resume%20(Abhishek%20Verma)-Mp-LsHji.pdf" 
+                href="/attached_assets/Resume (Abhishek Verma)-Mp-LsHji.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-6 py-3 bg-primary text-white rounded-md text-sm font-medium hover:bg-primary/90 transition-colors shadow-sm"
