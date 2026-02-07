@@ -1,0 +1,43 @@
+export const projects = [
+  {
+    id: 1,
+    title: "DevScope",
+    description: "GitHub-powered portfolio builder with OAuth2 integration. Real-time activity graphs via GraphQL API. GPT-4 generated resumes reducing profile creation by 65%. 50+ developers onboarded during closed beta with 86% user satisfaction.",
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c",
+    technologies: ["React.js", "Node.js", "Express.js", "Supabase"],
+    tags: ["React.js", "Node.js", "Express.js", "Supabase", "Recharts", "OpenAI", "GitHub GraphQL API"],
+    demoUrl: "",
+    sourceUrl: "https://github.com/Abhishhek-Verma/DevScope",
+  },
+  {
+    id: 2,
+    title: "NextStepAI",
+    description: "AI-powered Career Copilot with personalized trajectory planning using XGBoost and Gemini Pro. XGBoost classification with 92% accuracy for role-based skill recommendations. GitHub & LeetCode integration for real-time skill assessment and progress tracking.",
+    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e",
+    technologies: ["React.js", "Node.js", "Express.js", "PostgreSQL"],
+    tags: ["React.js", "Node.js", "Express.js", "PostgreSQL", "XGBoost", "Gemini Pro", "GitHub API", "LeetCode API"],
+    demoUrl: "",
+    sourceUrl: "#",
+  },
+  {
+    id: 3,
+    title: "Civic Platform",
+    description: "AI-driven platform for one-click civic campaign creation using GPT-4. Reduced setup time by 70% with automated campaign generation. 45% improvement in campaign participation through map-based discovery. 4-tier trust model cutting duplicate/fake campaigns by 80%.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+    technologies: ["React.js", "Node.js", "Express.js", "MongoDB"],
+    tags: ["React.js", "Node.js", "Express.js", "MongoDB", "GPT-4"],
+    demoUrl: "",
+    sourceUrl: "https://github.com/Abhishhek-Verma/Civic-Platform",
+  },
+  {
+    id: 4,
+    title: "Artistry Hub",
+    description: "A platform for artists to showcase their work, connect with other creatives, and find opportunities. Features user profiles, portfolio galleries, and messaging system.",
+    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe",
+    technologies: ["React", "Node.js", "MongoDB"],
+    tags: ["React", "Node.js", "Express", "MongoDB", "Authentication"],
+    demoUrl: "",
+    sourceUrl: "https://github.com/Abhishhek-Verma/Artistry-Hub",
+  },
+];
+
