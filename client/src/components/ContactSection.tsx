@@ -86,8 +86,6 @@ const ContactSection = () => {
       const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
       
-      console.log('EmailJS Config:', { serviceID, templateID, publicKey: publicKey ? 'Set' : 'Missing' });
-      
       // Send email using EmailJS
       const result = await emailjs.send(
         serviceID,
@@ -99,8 +97,6 @@ const ContactSection = () => {
           message: formData.message,
         }
       );
-      
-      console.log('EmailJS Success:', result);
       
       toast({
         title: "Message Sent!",

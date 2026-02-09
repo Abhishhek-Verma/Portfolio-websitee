@@ -6,7 +6,7 @@ export const projects = [
     image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c",
     technologies: ["React.js", "Node.js", "Express.js", "Supabase"],
     tags: ["React.js", "Node.js", "Express.js", "Supabase", "Recharts", "OpenAI", "GitHub GraphQL API"],
-    demoUrl: "",
+    demoUrl: "https://devscope-analyser.netlify.app/",
     sourceUrl: "https://github.com/Abhishhek-Verma/DevScope",
   },
   {
@@ -18,6 +18,7 @@ export const projects = [
     tags: ["React.js", "Node.js", "Express.js", "PostgreSQL", "XGBoost", "Gemini Pro", "GitHub API", "LeetCode API"],
     demoUrl: "",
     sourceUrl: "#",
+    status: "Under Development",
   },
   {
     id: 3,
@@ -26,7 +27,7 @@ export const projects = [
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
     technologies: ["React.js", "Node.js", "Express.js", "MongoDB"],
     tags: ["React.js", "Node.js", "Express.js", "MongoDB", "GPT-4"],
-    demoUrl: "",
+    demoUrl: "https://cursorcivicserver.vercel.app/",
     sourceUrl: "https://github.com/Abhishhek-Verma/Civic-Platform",
   },
   {

@@ -11,6 +11,7 @@ interface Project {
   tags: string[];
   demoUrl?: string;
   sourceUrl?: string;
+  status?: string;
 }
 
 const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
@@ -31,6 +32,11 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
           alt={project.title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
+        {project.status && (
+          <div className="absolute top-4 left-4 bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-medium shadow-md">
+            {project.status}
+          </div>
+        )}
         <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-gray-600 shadow-sm border border-gray-100">
           {project.technologies[0]}
         </div>
@@ -124,6 +130,11 @@ const FeaturedProject = ({ project }: { project: Project }) => {
           <div className="absolute top-4 left-4 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-medium">
             Featured Project
           </div>
+          {project.status && (
+            <div className="absolute top-4 right-4 bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-medium shadow-md">
+              {project.status}
+            </div>
+          )}
         </div>
         <div className="p-8 flex flex-col justify-between">
           <div>
