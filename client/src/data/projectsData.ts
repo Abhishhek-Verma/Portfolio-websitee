@@ -37,7 +37,7 @@ export const projects = [
     image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe",
     technologies: ["React", "Node.js", "MongoDB"],
     tags: ["React", "Node.js", "Express", "MongoDB", "Authentication"],
-    demoUrl: "",
+    demoUrl: "https://artistry-hubb.netlify.app/",
     sourceUrl: "https://github.com/Abhishhek-Verma/Artistry-Hub",
   },
 ];
