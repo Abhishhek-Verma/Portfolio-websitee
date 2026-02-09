@@ -4,6 +4,13 @@ import { skills, expertise, type Skill } from "@/data/skillsData";
 
 const SkillCard = ({ skill, index }: { skill: Skill; index: number }) => {
   const [ref, inView] = useScrollAnimation({ threshold: 0.1 });
+  
+  const getIconUrl = () => {
+    if (skill.iconType === 'devicon') {
+      return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.icon}/${skill.icon}-original.svg`;
+    }
+    return `https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/${skill.icon}.svg`;
+  };
 
   return (
     <motion.div
@@ -17,14 +24,15 @@ const SkillCard = ({ skill, index }: { skill: Skill; index: number }) => {
       <div className="relative mb-4">
         <div className="w-16 h-16 flex items-center justify-center rounded-lg bg-gray-50 group-hover:bg-blue-50 transition-colors duration-300">
           <img
-            src={`https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/${skill.icon}.svg`}
+            src={getIconUrl()}
             alt={skill.name}
             className="w-10 h-10"
-            style={{ filter: 'grayscale(100%)', opacity: 0.7 }}
-            onLoad={(e) => {
+            onError={(e) => {
               const img = e.target as HTMLImageElement;
-              img.style.filter = 'none';
-              img.style.opacity = '1';
+              // Fallback to plain icon
+              if (skill.iconType === 'devicon') {
+                img.src = `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.icon}/${skill.icon}-plain.svg`;
+              }
             }}
           />
         </div>
