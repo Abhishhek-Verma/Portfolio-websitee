@@ -1,30 +1,46 @@
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { programmingSkills, webSkills, databaseSkills, achievements } from "@/data/skillsData";
+import { skills, expertise, type Skill } from "@/data/skillsData";
 
-const SkillBar = ({ name, percentage }: { name: string; percentage: number }) => {
+const SkillCard = ({ skill, index }: { skill: Skill; index: number }) => {
   const [ref, inView] = useScrollAnimation({ threshold: 0.1 });
 
   return (
-    <div className="mb-6">
-      <div className="flex justify-between items-center mb-2">
-        <span className="font-medium text-gray-800 font-inter">{name}</span>
-        <span className="text-sm text-gray-500 font-inter bg-gray-100 px-2 py-0.5 rounded-md">{percentage}%</span>
+    <motion.div
+      ref={ref}
+      className="group relative bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-lg hover:border-primary/20 transition-all duration-300 flex flex-col items-center justify-center"
+      initial={{ opacity: 0, y: 20 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.5, delay: index * 0.05 }}
+      whileHover={{ y: -8, scale: 1.02 }}
+    >
+      <div className="relative mb-4">
+        <div className="w-16 h-16 flex items-center justify-center rounded-lg bg-gray-50 group-hover:bg-blue-50 transition-colors duration-300">
+          <img
+            src={`https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/${skill.icon}.svg`}
+            alt={skill.name}
+            className="w-10 h-10"
+            style={{ filter: 'grayscale(100%)', opacity: 0.7 }}
+            onLoad={(e) => {
+              const img = e.target as HTMLImageElement;
+              img.style.filter = 'none';
+              img.style.opacity = '1';
+            }}
+          />
+        </div>
+        <div 
+          className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl"
+          style={{ backgroundColor: skill.color }}
+        ></div>
       </div>
-      <div className="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
-        <motion.div
-          ref={ref}
-          className="h-full bg-primary rounded-full"
-          initial={{ width: 0 }}
-          animate={inView ? { width: `${percentage}%` } : { width: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-        ></motion.div>
-      </div>
-    </div>
+      <h4 className="text-sm font-semibold text-gray-800 text-center font-inter group-hover:text-primary transition-colors duration-300">
+        {skill.name}
+      </h4>
+    </motion.div>
   );
 };
 
-const SkillCard = ({ icon, name }: { icon: string; name: string }) => {
+const ExpertiseCard = ({ icon, name }: { icon: string; name: string }) => {
   return (
     <motion.div
       className="flex items-center bg-white p-4 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300"
@@ -40,13 +56,15 @@ const SkillCard = ({ icon, name }: { icon: string; name: string }) => {
 
 const SkillsSection = () => {
   const [titleRef, titleInView] = useScrollAnimation();
-  const [ref1, inView1] = useScrollAnimation();
-  const [ref2, inView2] = useScrollAnimation({ threshold: 0.1, delay: 0.2 });
+  const [expertiseRef, expertiseInView] = useScrollAnimation({ threshold: 0.1 });
+
+  // Group skills by category
+  const categories = Array.from(new Set(skills.map(skill => skill.category)));
 
   return (
     <section id="skills" className="section-padding bg-gray-50 relative">
       {/* Subtle background patterns */}
-      <div className="absolute inset-0 bg-gray-50 opacity-50 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white pointer-events-none"></div>
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/10 via-primary/30 to-primary/10"></div>
 
       <div className="container mx-auto relative z-10">
@@ -70,118 +88,57 @@ const SkillsSection = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
-          {/* Skills Charts Section */}
-          <motion.div
-            ref={ref1}
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView1 ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.7 }}
-          >
-            <div className="bg-white p-8 rounded-lg shadow-md border border-gray-100">
-              <div className="flex items-center mb-6">
-                <div className="mr-4 bg-blue-50 p-3 rounded-md">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-merriweather font-bold text-gray-800">
-                  Programming Languages
+        {/* Skills Grid by Category */}
+        <div className="space-y-12 mb-16">
+          {categories.map((category) => {
+            const categorySkills = skills.filter(skill => skill.category === category);
+            return (
+              <div key={category}>
+                <h3 className="text-2xl font-merriweather font-bold text-gray-800 mb-6 text-center">
+                  {category}
                 </h3>
-              </div>
-
-              <div className="space-y-6">
-                {programmingSkills.map((skill) => (
-                  <SkillBar 
-                    key={skill.name} 
-                    name={skill.name} 
-                    percentage={skill.percentage} 
-                  />
-                ))}
-              </div>
-              
-              <div className="mt-10">
-                <div className="flex items-center mb-6">
-                  <div className="mr-4 bg-blue-50 p-3 rounded-md">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-merriweather font-bold text-gray-800">
-                    Web Technologies
-                  </h3>
-                </div>
-
-                <div className="space-y-6">
-                  {webSkills.map((skill) => (
-                    <SkillBar 
-                      key={skill.name} 
-                      name={skill.name} 
-                      percentage={skill.percentage} 
-                    />
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                  {categorySkills.map((skill, index) => (
+                    <SkillCard key={skill.name} skill={skill} index={index} />
                   ))}
                 </div>
               </div>
-            </div>
-          </motion.div>
-
-          {/* Database & Achievements Section */}
-          <motion.div
-            ref={ref2}
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView2 ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            <div className="bg-white p-8 rounded-lg shadow-md border border-gray-100 mb-8">
-              <div className="flex items-center mb-6">
-                <div className="mr-4 bg-blue-50 p-3 rounded-md">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-merriweather font-bold text-gray-800">
-                  Database & Other Tools
-                </h3>
-              </div>
-
-              <div className="space-y-6">
-                {databaseSkills.map((skill) => (
-                  <SkillBar 
-                    key={skill.name} 
-                    name={skill.name} 
-                    percentage={skill.percentage} 
-                  />
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-white p-8 rounded-lg shadow-md border border-gray-100">
-              <div className="flex items-center mb-6">
-                <div className="mr-4 bg-blue-50 p-3 rounded-md">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-merriweather font-bold text-gray-800">
-                  Achievements & Expertise
-                </h3>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {achievements.map((achievement, index) => (
-                  <motion.div
-                    key={achievement.name}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={inView2 ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ duration: 0.4, delay: 0.1 * index }}
-                  >
-                    <SkillCard icon={achievement.icon} name={achievement.name} />
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
+            );
+          })}
         </div>
+
+        {/* Expertise Section */}
+        <motion.div
+          ref={expertiseRef}
+          initial={{ opacity: 0, y: 30 }}
+          animate={expertiseInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.7 }}
+          className="bg-white p-8 rounded-xl shadow-md border border-gray-100 max-w-4xl mx-auto"
+        >
+          <div className="flex items-center justify-center mb-6">
+            <div className="mr-4 bg-blue-50 p-3 rounded-md">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+              </svg>
+            </div>
+            <h3 className="text-2xl font-merriweather font-bold text-gray-800">
+              Core Expertise
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {expertise.map((item, index) => (
+              <motion.div
+                key={item.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={expertiseInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.4, delay: 0.1 * index }}
+              >
+                <ExpertiseCard icon={item.icon} name={item.name} />
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
