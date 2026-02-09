@@ -5,8 +5,7 @@ import { AnimationProvider } from "./context/AnimationContext";
 import emailjs from '@emailjs/browser';
 
 // Initialize EmailJS with public key
-const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
+const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 if (publicKey) {
   emailjs.init(publicKey);
 }

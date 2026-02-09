@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { experience, education, certifications } from "@/data/experienceData";
+import resumePdf from "@assets/Resume (Abhishek Verma).pdf";
 
 interface TimelineItemProps {
   title: string;
@@ -224,7 +225,7 @@ const ExperienceSection = () => {
               <h4 className="text-lg font-bold text-gray-800 mb-3">Want to know more?</h4>
               <p className="text-gray-600 mb-4">Download my complete resume to learn more about my skills and experiences.</p>
               <a 
-                href="/attached_assets/Resume (Abhishek Verma).pdf" 
+                href={resumePdf}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-6 py-3 bg-primary text-white rounded-md text-sm font-medium hover:bg-primary/90 transition-colors shadow-sm"
