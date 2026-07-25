@@ -1,16 +1,36 @@
 export const projects = [
   {
     id: 1,
-    title: "DevScope",
-    description: "GitHub-powered portfolio builder with OAuth2 integration. Real-time activity graphs via GraphQL API. GPT-4 generated resumes reducing profile creation by 65%. 50+ developers onboarded during closed beta with 86% user satisfaction.",
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c",
-    technologies: ["React.js", "Node.js", "Express.js", "Supabase"],
-    tags: ["React.js", "Node.js", "Express.js", "Supabase", "Recharts", "OpenAI", "GitHub GraphQL API"],
-    demoUrl: "https://devscope-analyser.netlify.app/",
-    sourceUrl: "https://github.com/Abhishhek-Verma/DevScope",
+    title: "Self-Healing Distributed Cache",
+    description: "A production-inspired distributed caching system implementing consistent hashing, replication, automatic failover, and self-healing. The system automatically distributes data across multiple cache nodes, detects failures using heartbeat monitoring, performs intelligent cluster rebalancing with minimal key movement, and provides real-time observability through Prometheus and Grafana dashboards.",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    technologies: ["React", "Node.js", "Express.js", "Redis", "Docker", "WebSocket", "Prometheus", "Grafana", "AWS"],
+    tags: ["React", "Node.js", "Express.js", "Redis", "Docker", "WebSocket", "Prometheus", "Grafana", "AWS"],
+    demoUrl: "",
+    sourceUrl: "https://github.com/Abhishhek-Verma/Distributed-Cache",
   },
   {
     id: 2,
+    title: "RAG AI Codebase Assistant",
+    description: "An AI-powered developer assistant that converts GitHub repositories into searchable knowledge bases using Retrieval-Augmented Generation (RAG). Developers can ask natural language questions about complex codebases and receive contextual, multi-file responses using semantic search, embeddings, and vector databases.",
+    image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c",
+    technologies: ["React", "Node.js", "LangChain", "OpenAI", "Vector DB", "GitHub API"],
+    tags: ["React", "Node.js", "LangChain", "OpenAI", "Vector DB", "GitHub API"],
+    demoUrl: "",
+    sourceUrl: "https://github.com/Abhishhek-Verma/AI-Codebase-Chat-Assistant",
+  },
+  {
+    id: 3,
+    title: "DevScope",
+    description: "A GitHub-powered developer portfolio platform that analyzes repositories, contributions, and developer activity to generate AI-powered resumes, portfolio dashboards, analytics, and professional summaries using GitHub GraphQL API and OpenAI.",
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c",
+    technologies: ["React.js", "Node.js", "Express.js", "Supabase", "Recharts", "OpenAI", "GitHub GraphQL API"],
+    tags: ["React.js", "Node.js", "Express.js", "Supabase", "Recharts", "OpenAI", "GitHub GraphQL API"],
+    demoUrl: "https://devscope-analyser.netlify.app/",
+    sourceUrl: "#",
+  },
+  {
+    id: 4,
     title: "NextStepAI",
     description: "AI-powered Career Copilot with personalized trajectory planning using XGBoost and Gemini Pro. XGBoost classification with 92% accuracy for role-based skill recommendations. GitHub & LeetCode integration for real-time skill assessment and progress tracking.",
     image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e",
@@ -21,7 +41,7 @@ export const projects = [
     status: "Under Development",
   },
   {
-    id: 3,
+    id: 5,
     title: "Civic Platform",
     description: "AI-driven platform for one-click civic campaign creation using GPT-4. Reduced setup time by 70% with automated campaign generation. 45% improvement in campaign participation through map-based discovery. 4-tier trust model cutting duplicate/fake campaigns by 80%.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
@@ -31,7 +51,7 @@ export const projects = [
     sourceUrl: "https://github.com/Abhishhek-Verma/Civic-Platform",
   },
   {
-    id: 4,
+    id: 6,
     title: "Artistry Hub",
     description: "A platform for artists to showcase their work, connect with other creatives, and find opportunities. Features user profiles, portfolio galleries, and messaging system.",
     image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe",
@@ -41,4 +61,5 @@ export const projects = [
     sourceUrl: "https://github.com/Abhishhek-Verma/Artistry-Hub",
   },
 ];
+
 

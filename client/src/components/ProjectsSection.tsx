@@ -89,7 +89,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                 </svg>
               </a>
             )}
-            {project.sourceUrl && project.sourceUrl !== "" && project.sourceUrl !== "#" && (
+            {project.sourceUrl && project.sourceUrl !== "" && (
               <a
                 href={project.sourceUrl}
                 target="_blank"
@@ -172,7 +172,7 @@ const FeaturedProject = ({ project }: { project: Project }) => {
                 Live Demo
               </a>
             )}
-            {project.sourceUrl && project.sourceUrl !== "" && project.sourceUrl !== "#" && (
+            {project.sourceUrl && project.sourceUrl !== "" && (
               <a
                 href={project.sourceUrl}
                 target="_blank"

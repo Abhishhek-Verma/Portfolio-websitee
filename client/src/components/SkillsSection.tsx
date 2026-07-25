@@ -6,6 +6,9 @@ const SkillCard = ({ skill, index }: { skill: Skill; index: number }) => {
   const [ref, inView] = useScrollAnimation({ threshold: 0.1 });
   
   const getIconUrl = () => {
+    if (skill.iconType === 'url' || skill.icon.startsWith('http://') || skill.icon.startsWith('https://') || skill.icon.startsWith('data:')) {
+      return skill.icon;
+    }
     if (skill.iconType === 'devicon') {
       return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.icon}/${skill.icon}-original.svg`;
     }
@@ -26,12 +29,13 @@ const SkillCard = ({ skill, index }: { skill: Skill; index: number }) => {
           <img
             src={getIconUrl()}
             alt={skill.name}
-            className="w-10 h-10"
+            className="w-10 h-10 object-contain"
             onError={(e) => {
               const img = e.target as HTMLImageElement;
-              // Fallback to plain icon
               if (skill.iconType === 'devicon') {
                 img.src = `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.icon}/${skill.icon}-plain.svg`;
+              } else {
+                img.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="%232563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>`;
               }
             }}
           />
