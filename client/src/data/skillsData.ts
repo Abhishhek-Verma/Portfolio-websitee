@@ -10,7 +10,6 @@ export const skills: Skill[] = [
   // Programming Languages
   { name: "Java", icon: "java", color: "#007396", category: "Programming Languages", iconType: "devicon" },
   { name: "JavaScript", icon: "javascript", color: "#F7DF1E", category: "Programming Languages", iconType: "devicon" },
-  { name: "C", icon: "c", color: "#A8B9CC", category: "Programming Languages", iconType: "devicon" },
   { name: "HTML5", icon: "html5", color: "#E34F26", category: "Programming Languages", iconType: "devicon" },
   { name: "CSS3", icon: "css3", color: "#1572B6", category: "Programming Languages", iconType: "devicon" },
 
