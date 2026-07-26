@@ -76,19 +76,21 @@ const AboutSection = () => {
             transition={{ duration: 0.7 }}
           >
             <h3 className="text-2xl font-merriweather font-bold mb-6 text-gray-800">
-              Computer Science Student at KIET Group of Institutions
-            </h3>
+  Backend Software Engineer & Computer Science Student
+</h3>
+          <p className="text-gray-600 mb-6 leading-relaxed font-inter">
+  I'm a Computer Science student passionate about building scalable backend systems,
+  distributed applications, and cloud-native software. I enjoy designing reliable
+  APIs, solving complex engineering problems, and building systems that perform
+  efficiently in real-world environments.
+</p>
             
-            <p className="text-gray-600 mb-6 leading-relaxed font-inter">
-              I'm passionate about building interactive and user-friendly web applications. 
-              My journey in tech started with HTML and CSS, and I've since expanded to the 
-              MERN stack and Java programming.
-            </p>
-            
-            <p className="text-gray-600 mb-8 leading-relaxed font-inter">
-              I enjoy solving complex problems with elegant solutions and continuously 
-              learning new technologies to stay at the forefront of web development.
-            </p>
+           <p className="text-gray-600 mb-8 leading-relaxed font-inter">
+  My primary technologies include Javascript, Node.js, Express.js,
+  Docker, AWS, PostgreSQL, MongoDB, Redis, and React. I'm currently seeking
+  Software Engineering internships and early-career opportunities where I can
+  contribute to impactful products while continuing to grow as a backend engineer.
+</p>
 
             {/* Information cards */}
             <div className="grid sm:grid-cols-2 gap-6 mt-10">
@@ -114,7 +116,9 @@ const AboutSection = () => {
                   </div>
                   <h4 className="font-medium text-gray-800">Experience</h4>
                 </div>
-                <p className="text-gray-600 ml-10 text-sm">2+ years of coding experience</p>
+                <p className="text-gray-600 ml-10 text-sm">
+  Backend Development • Distributed Systems • Cloud
+</p>
               </div>
               
               <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300">
