@@ -62,7 +62,7 @@ const AboutSection = () => {
                 <div className="flex items-center">
                   <div className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse mr-2"></div>
                   <span className="text-gray-700 font-medium text-sm">
-                    Currently Working on Personal Projects
+                   Open to Work 
                   </span>
                 </div>
               </motion.div>
